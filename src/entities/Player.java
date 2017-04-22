@@ -5,21 +5,24 @@ import java.awt.event.KeyEvent;
 import main.InputHandler;
 
 public class Player extends Entity {
+	private int GROUND = 300;
+	public int moveSpeed = 5;
+	public int jumpHeight = 15;
+
 	public Player(String link) {
 		super(link);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void update() {
-		hitbox.update(x, y);
-		inputHandler();
-	}
-	
-	public void inputHandler(){
-		if(InputHandler.isKeyTyped(KeyEvent.VK_W)){
-			x += 10;
-			System.out.println("yes");
+		x += xvel;
+		if (y + yvel > GROUND) {
+			yvel = 0;
+		} else {
+			yvel++;
 		}
-		
+		y += yvel;
+		hitbox.update(x, y);
 	}
+
 }

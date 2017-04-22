@@ -8,13 +8,12 @@ import entities.Player;
 import graphics.Screen;
 
 public class Level {
+	Player player = new Player("/sprites/teemo.png");
 	List<Entity> entities = new ArrayList<Entity>();
 
 	public Level() {
-		Entity teemo = new Entity("/sprites/teemo.png");
-		entities.add(teemo);
-		
-		entities.add(new Player("/sprites/teemo.png"));
+
+		entities.add(player);
 
 	}
 

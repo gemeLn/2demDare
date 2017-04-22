@@ -5,31 +5,38 @@ import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
 
-public class InputHandler extends KeyAdapter {
+import entities.Player;
 
-	private static Set<Integer> keys = new HashSet<Integer>();
-	private static Set<Integer> typedKeys = new HashSet<Integer>();
+public class InputHandler extends KeyAdapter {
+	Player player;
+
+	public InputHandler(Player p) {
+		player = p;
+	}
 
 	public void keyPressed(KeyEvent e) {
-		if (!keys.contains(e.getKeyCode()))
-			typedKeys.add(e.getKeyCode());
-		keys.add(e.getKeyCode());
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			player.xvel = -player.moveSpeed;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			player.xvel = player.moveSpeed;
+
+		}
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			player.yvel = -player.jumpHeight;
+		}
+
 	}
 
 	public void keyReleased(KeyEvent e) {
-		keys.remove(e.getKeyCode());
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			if (player.xvel < 0)
+				player.xvel = 0;
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			if (player.xvel > 0)
+				player.xvel = 0;
+		}
+
 	}
 
-	public static boolean isKeyTyped(int keycode) {
-		System.out.println(typedKeys.contains(keycode));
-		return typedKeys.contains(keycode);
-	}
-
-	public static boolean isKeyPressed(int keycode) {
-		return keys.contains(keycode);
-	}
-
-	public static void clear() {
-		typedKeys.clear();
-	}
 }
