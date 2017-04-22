@@ -16,7 +16,7 @@ public class Level {
 	public Font font = new Font("Sans-Serif", 1, 30);
 	public boolean run = true;
 	public static int GROUND = 500;
-	Player player = new Player("/sprites/teemo.png", 100, 100);
+	Player player = new Player("/sprites/PlayerSpriteSheet.png", 100, 100);
 	AlienCitizen alien1 = new AlienCitizen("/sprites/teemo.png", 100, 100);
 	Texture cityBG = new Texture("/sprites/city.png", 960, 540);
 	Texture BG = cityBG;

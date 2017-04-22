@@ -3,6 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import graphics.SpriteSheet;
 import main.Main;
 
 public class Player extends Entity {
@@ -11,9 +12,12 @@ public class Player extends Entity {
 	public boolean inAir = true;
 
 	public Player(String link, int width, int height) {
-		super(link, width, height);
-		// TODO Auto-generated constructor stub
+		super(link, 960, 64);
+		SpriteSheet spriteSheet = new SpriteSheet(sprite, 32, 32);
+		this.width = width;
+		this.height = height;
 		jumpHeight = 15;
+		sprite = spriteSheet.getTexture(0,0);
 	}
 
 	public void update() {
