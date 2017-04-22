@@ -32,8 +32,8 @@ public class Hitbox extends Rectangle {
 	}
 
 	public void update(int x, int y) {
-		this.x = x;
-		this.y = y;
+		this.x = x + xdif;
+		this.y = y + ydif;
 	}
 
 }

@@ -12,8 +12,8 @@ public class Entity {
 	public int x, y, xvel, yvel = 0;
 	public Texture sprite;
 
-	public Entity(String link) {
-		sprite = new Texture(link, 100, 100);
+	public Entity(String link, int width, int height) {
+		sprite = new Texture(link, width, height);
 		x = 100;
 		y = 100;
 	}

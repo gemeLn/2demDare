@@ -8,7 +8,7 @@ import entities.Player;
 import graphics.Screen;
 
 public class Level {
-	Player player = new Player("/sprites/teemo.png");
+	Player player = new Player("/sprites/teemo.png", 100, 100);
 	List<Entity> entities = new ArrayList<Entity>();
 
 	public Level() {
