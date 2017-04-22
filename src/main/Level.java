@@ -17,12 +17,12 @@ public class Level {
 	public Level() {
 
 		entities.add(player);
-		// entities.add(alien1);
+		entities.add(alien1);
 
 	}
 
 	public void update() {
-		for (int i = 0; i < entities.size(); i++)
+		for (int i = entities.size() - 1; i > 0; i--)
 			entities.get(i).update();
 	}
 

@@ -23,7 +23,7 @@ public class InputHandler extends KeyAdapter {
 
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
-			player.yvel = -player.jumpHeight;
+			player.jump();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_Q) {
 			
