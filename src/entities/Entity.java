@@ -13,6 +13,8 @@ public class Entity {
 
 	public Entity(String link) {
 		sprite = new Texture(link, 100, 100);
+		x = 100;
+		y = 100;
 	}
 
 	public void update() {
