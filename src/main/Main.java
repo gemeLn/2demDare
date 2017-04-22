@@ -1,5 +1,6 @@
 package main;
 
+import main.InputHandler;
 import graphics.Screen;
 import graphics.Window;
 
@@ -15,15 +16,18 @@ public class Main {
 	}
 
 	private void loop() {
+		
 		Window window = new Window("Game", 960, 540);
 		window.show();
 		window.update();
+		window.addKeyListener(new InputHandler());
 		Screen screen = window.getScreen();
 		while (true) {
 			level.update();
 			level.render(screen);
 			window.update();
 			screen.clear(0xffffff);
+			InputHandler.clear();
 		}
 	}
 

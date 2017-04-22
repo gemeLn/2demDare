@@ -23,7 +23,6 @@ public class Entity {
 	}
 
 	public void render(Screen screen) {
-		System.out.println("render");
 		screen.drawTexture(x, y, sprite);
 		screen.drawRect(1, 1, 100, 100, 0xFFFFFFF);
 

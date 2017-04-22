@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Entity;
+import entities.Player;
 import graphics.Screen;
 
 public class Level {
@@ -12,6 +13,8 @@ public class Level {
 	public Level() {
 		Entity teemo = new Entity("/sprites/teemo.png");
 		entities.add(teemo);
+		
+		entities.add(new Player("/sprites/teemo.png"));
 
 	}
 
