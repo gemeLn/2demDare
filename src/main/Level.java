@@ -9,6 +9,7 @@ import entities.Player;
 import graphics.Screen;
 
 public class Level {
+	public static int GROUND = 500;
 	Player player = new Player("/sprites/teemo.png", 100, 100);
 	AlienCitizen alien1 = new AlienCitizen("/sprites/teemo.png", 100, 100);
 	public List<Entity> entities = new ArrayList<Entity>();
@@ -16,7 +17,7 @@ public class Level {
 	public Level() {
 
 		entities.add(player);
-		//entities.add(alien1);
+		// entities.add(alien1);
 
 	}
 
