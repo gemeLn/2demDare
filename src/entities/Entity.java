@@ -6,14 +6,22 @@ import graphics.Screen;
 import graphics.Texture;
 
 public class Entity {
-	public ArrayList<Hitbox> hitArray = new ArrayList<Hitbox>();
+	public Hitbox hitbox = new Hitbox(3, 0, 0, 1, 1, 100);
 	public ArrayList<Hitbox> hurtArray = new ArrayList<>();
 	public int x, y;
 	public Texture sprite;
 
+	public Entity(String link) {
+		sprite = new Texture(link, 100, 100);
+	}
+
 	public void update() {
+		hitbox.update(x, y);
 	}
 
 	public void render(Screen screen) {
+		System.out.println("render");
+		screen.drawTexture(x, y, sprite);
+
 	}
 }
