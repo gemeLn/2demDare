@@ -20,12 +20,14 @@ public class Entity {
 		sprite = new Texture(link, width, height);
 		this.width = width;
 		this.height = height;
-		x = 100;
-		y = 100;
+	}
+
+	public void setHitbox(Hitbox h) {
+		hitbox = h;
 	}
 
 	public void update() {
-		hitbox.update(x, y);
+
 	}
 
 	public void jump() {
@@ -61,6 +63,6 @@ public class Entity {
 	}
 
 	public void interact() {
-		
+
 	}
 }

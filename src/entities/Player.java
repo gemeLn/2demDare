@@ -17,16 +17,21 @@ public class Player extends Entity {
 	}
 
 	public void update() {
+
 		gravity();
 
 	}
-	
-	public void interact(){
-		List<Entity> entities = Main.getInstance().level.entities;
-		for(int i = 1; i < entities.size(); i++){
-			if(hitbox.intersects(entities.get(i).hitbox)){
-				entities.get(i).interact();
-				break;
+
+	public void interact() {
+		if (!Main.getInstance().level.run) {
+			Main.getInstance().level.advance();
+		} else {
+			List<Entity> entities = Main.getInstance().level.entities;
+			for (int i = 1; i < entities.size(); i++) {
+				if (hitbox.intersects(entities.get(i).hitbox)) {
+					entities.get(i).interact();
+					break;
+				}
 			}
 		}
 	}
