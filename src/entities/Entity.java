@@ -12,7 +12,7 @@ public class Entity {
 	public Texture sprite;
 
 	public void update() {
-		}
+	}
 
 	public void render(Screen screen) {
 	}
