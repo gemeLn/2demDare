@@ -22,6 +22,7 @@ public class Main {
 		window.update();
 		window.addKeyListener(new InputHandler());
 		Screen screen = window.getScreen();
+		
 		while (true) {
 			level.update();
 			level.render(screen);

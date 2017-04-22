@@ -18,7 +18,8 @@ public class Player extends Entity {
 	public void inputHandler(){
 		if(InputHandler.isKeyTyped(KeyEvent.VK_W)){
 			x += 10;
+			System.out.println("yes");
 		}
-		System.out.println("yes");
+		
 	}
 }

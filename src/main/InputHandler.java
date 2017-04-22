@@ -21,6 +21,7 @@ public class InputHandler extends KeyAdapter {
 	}
 
 	public static boolean isKeyTyped(int keycode) {
+		System.out.println(typedKeys.contains(keycode));
 		return typedKeys.contains(keycode);
 	}
 
