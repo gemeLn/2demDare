@@ -16,10 +16,11 @@ public class AlienCitizen extends Entity{
 	}
 	
 	public void update(){
-		if (hitbox.intersects(Main.getInstance().level.entities.get(0).hitbox)){
-			System.out.println("hi");
-		}
 		gravity();
 		hitbox.update(x, y);
+	}
+	
+	public void interact() {
+		System.out.println("Hello Human");
 	}
 }

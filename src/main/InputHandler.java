@@ -26,7 +26,7 @@ public class InputHandler extends KeyAdapter {
 			player.jump();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_Q) {
-			
+			player.interact();
 		}
 
 	}

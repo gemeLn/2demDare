@@ -15,14 +15,13 @@ public class Level {
 	public List<Entity> entities = new ArrayList<Entity>();
 
 	public Level() {
-
 		entities.add(player);
 		entities.add(alien1);
 
 	}
 
 	public void update() {
-		for (int i = entities.size() - 1; i > 0; i--)
+		for (int i = 0; i < entities.size(); i++)
 			entities.get(i).update();
 	}
 
