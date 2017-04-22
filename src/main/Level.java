@@ -9,13 +9,17 @@ import entities.AlienCitizen;
 import entities.Entity;
 import entities.Player;
 import graphics.Screen;
+import graphics.Texture;
 
 public class Level {
+
 	public Font font = new Font("Sans-Serif", 1, 30);
 	public boolean run = true;
 	public static int GROUND = 500;
 	Player player = new Player("/sprites/teemo.png", 100, 100);
 	AlienCitizen alien1 = new AlienCitizen("/sprites/teemo.png", 100, 100);
+	Texture cityBG = new Texture("/sprites/city.png", 960, 540);
+	Texture BG = cityBG;
 	public List<Entity> entities = new ArrayList<Entity>();
 	Entity dialougeBox = new Entity("/sprites/box.png", 960, 160);
 	public int dialougeTotal = 0;
@@ -51,11 +55,13 @@ public class Level {
 	}
 
 	public void render(Screen screen) {
+		screen.drawTexture(0, 0, BG);
 		if (!run) {
 			dialougeBox.render(screen);
 			screen.drawString(dialougeArray[dialougeCounter], 100, 100, font, Color.black);
 		}
 		for (Entity e : entities) {
+
 			e.render(screen);
 		}
 	}
