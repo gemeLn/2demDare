@@ -6,11 +6,18 @@ import graphics.Screen;
 import graphics.Window;
 
 public class Main {
+	public Main(){
+		instance = this;
+	}
 
 	Window window = new Window("Game", 960, 540);
 	long timeLR = System.currentTimeMillis();
 	double fps = 1000 / 60;
-	Level level;
+	public Level level;
+	static Main instance;
+	public static Main getInstance() {
+		return instance;
+	}
 
 	private void init() {
 		level = new Level();

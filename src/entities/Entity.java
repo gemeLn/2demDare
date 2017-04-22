@@ -7,7 +7,7 @@ import graphics.Screen;
 import graphics.Texture;
 
 public class Entity {
-	public Hitbox hitbox = new Hitbox(3, 0, 0, 1, 1, 100);
+	public Hitbox hitbox = new Hitbox(3, 0, 0, 64, 64, 100);
 	public ArrayList<Hitbox> hurtArray = new ArrayList<>();
 	public int x, y, xvel, yvel = 0;
 	public Texture sprite;
@@ -25,6 +25,6 @@ public class Entity {
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
 		screen.drawRect(1, 1, 100, 100, 0xFFFFFFF);
-
+		screen.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height, 0x000000);
 	}
 }
