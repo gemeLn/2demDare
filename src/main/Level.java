@@ -3,17 +3,20 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import entities.AlienCitizen;
 import entities.Entity;
 import entities.Player;
 import graphics.Screen;
 
 public class Level {
 	Player player = new Player("/sprites/teemo.png", 100, 100);
-	List<Entity> entities = new ArrayList<Entity>();
+	AlienCitizen alien1 = new AlienCitizen("/sprites/teemo.png", 100, 100);
+	public List<Entity> entities = new ArrayList<Entity>();
 
 	public Level() {
 
 		entities.add(player);
+		//entities.add(alien1);
 
 	}
 
