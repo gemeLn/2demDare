@@ -81,6 +81,11 @@ public class Level {
 	}
 
 	public void prevScene() {
+		currentScene--;
+		if (currentScene < 0) {
+			currentScene = totalScenes;
+		}
+		BG = scenes[currentScene].getTexture();
 	}
 
 	public void dialouge(String... mes) {

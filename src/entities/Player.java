@@ -20,16 +20,24 @@ public class Player extends Entity {
 		this.width = width;
 		this.height = height;
 		jumpHeight = 15;
-		sprite = spriteSheet.getTexture(0,0);
+		sprite = spriteSheet.getTexture(0, 0);
 		tick = 0;
 	}
 
 	public void update() {
-
+		if (x + xvel < 0) {
+			Main.getInstance().level.nextScene();
+			x = 960 - width;
+		} else if (x + width + xvel > 960) {
+			Main.getInstance().level.prevScene();
+			x = 0;
+		} else {
+			x += xvel;
+		}
 		gravity();
-		//if (walk){
-			walk();
-	//	}
+		// if (walk){
+		walk();
+		// }
 
 	}
 
@@ -46,13 +54,13 @@ public class Player extends Entity {
 			}
 		}
 	}
-	
-	public void walk(){
+
+	public void walk() {
 		sprite = spriteSheet.getTexture(tick, 0);
 		tick += 1;
 		System.out.println(tick);
-			
-		if(tick >= 30) {
+
+		if (tick >= 30) {
 			tick = 0;
 			walk = false;
 		}
