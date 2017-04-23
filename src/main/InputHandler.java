@@ -16,18 +16,21 @@ public class InputHandler extends KeyAdapter {
 	}
 
 	public void HerderPress(int e) {
-		if (e == KeyEvent.VK_LEFT){
+		if (e == KeyEvent.VK_LEFT) {
 			playerMini.xvel = -playerMini.moveSpeed;
-			playerMini.sprite = playerMini.spriteSheet.getTexture(3,0);
-		}if (e == KeyEvent.VK_RIGHT){
+			playerMini.sprite = playerMini.spriteSheet.getTexture(3, 0);
+		}
+		if (e == KeyEvent.VK_RIGHT) {
 			playerMini.xvel = playerMini.moveSpeed;
-			playerMini.sprite = playerMini.spriteSheet.getTexture(1,0);
-		}if (e == KeyEvent.VK_UP){
+			playerMini.sprite = playerMini.spriteSheet.getTexture(1, 0);
+		}
+		if (e == KeyEvent.VK_UP) {
 			playerMini.yvel = -playerMini.moveSpeed;
-			playerMini.sprite = playerMini.spriteSheet.getTexture(0,0);
-		}if (e == KeyEvent.VK_DOWN){
+			playerMini.sprite = playerMini.spriteSheet.getTexture(0, 0);
+		}
+		if (e == KeyEvent.VK_DOWN) {
 			playerMini.yvel = playerMini.moveSpeed;
-			playerMini.sprite = playerMini.spriteSheet.getTexture(2,0);
+			playerMini.sprite = playerMini.spriteSheet.getTexture(2, 0);
 		}
 	}
 
@@ -38,7 +41,7 @@ public class InputHandler extends KeyAdapter {
 		} else if (e == KeyEvent.VK_RIGHT) {
 			if (playerMini.xvel > 0)
 				playerMini.xvel = 0;
-		}else if (e == KeyEvent.VK_UP) {
+		} else if (e == KeyEvent.VK_UP) {
 			if (playerMini.yvel < 0)
 				playerMini.yvel = 0;
 		} else if (e == KeyEvent.VK_DOWN) {
@@ -88,16 +91,16 @@ public class InputHandler extends KeyAdapter {
 
 	public void RancherPress(int e) {
 		if (e == KeyEvent.VK_LEFT) {
-			Main.getInstance().rancher.aim.xvel = -7;
+			Main.getInstance().rancher.aim.move(3);
 		}
 		if (e == KeyEvent.VK_RIGHT) {
-			Main.getInstance().rancher.aim.xvel = 7;
+			Main.getInstance().rancher.aim.move(1);
 		}
 		if (e == KeyEvent.VK_UP) {
-			Main.getInstance().rancher.aim.yvel = -7;
+			Main.getInstance().rancher.aim.move(0);
 		}
 		if (e == KeyEvent.VK_DOWN) {
-			Main.getInstance().rancher.aim.yvel = 7;
+			Main.getInstance().rancher.aim.move(2);
 		}
 		if (e == KeyEvent.VK_SPACE) {
 			Main.getInstance().rancher.fire();
