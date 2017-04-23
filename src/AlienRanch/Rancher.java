@@ -68,7 +68,7 @@ public class Rancher {
 		for (Spider e : spiders) {
 			e.render(screen);
 		}
-		screen.drawTexture(aim.x, aim.y, aim.sprite);
+		screen.drawTexture(aim.x-30, aim.y-30, aim.sprite);
 		if (laserOn) {
 			laser.render(screen);
 		}

@@ -6,7 +6,8 @@ public class Aim extends Entity {
 
 	public Aim() {
 		super("/sprites/target.png", 60, 60);
-
+		x = 50;
+		y = 50;
 	}
 
 	public void update() {
