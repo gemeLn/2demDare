@@ -14,7 +14,7 @@ public class Spider extends Entity {
 
 	public Spider() {
 		super("/sprites/spider.png", 200, 100);
-		x = r.nextInt(600)+100;
+		x = r.nextInt(600) + 100;
 		y = r.nextInt(300) + 50;
 		sheet = new SpriteSheet(sprite, 100, 100);
 		sprite = sheet.getTexture(0, 0);
@@ -32,8 +32,8 @@ public class Spider extends Entity {
 		tick++;
 		if (tick > 30) {
 			tick = 0;
-			xvel = sign() * (r.nextInt(2) + 1);
-			yvel = sign() * r.nextInt(2);
+			xvel = sign() * (r.nextInt(4) + 1);
+			yvel = sign() * r.nextInt(4) + 1;
 		}
 
 		if (x + xvel < 0) {

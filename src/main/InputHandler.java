@@ -110,6 +110,8 @@ public class InputHandler extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		if (Main.getInstance().state == Main.State.City) {
 			CityRelease(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Rancher) {
+			RancherRelease(e.getKeyCode());
 		} else if (Main.getInstance().state == Main.State.Herder) {
 			HerderRelease(e.getKeyCode());
 		}
