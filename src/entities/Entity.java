@@ -27,6 +27,13 @@ public class Entity {
 	}
 
 	public void update() {
+		if (x + xvel < 0) {
+			x = 0;
+		} else if (x + width + xvel > 960) {
+			x = 960 - width;
+		} else {
+			x += xvel;
+		}
 
 	}
 
@@ -36,13 +43,6 @@ public class Entity {
 	}
 
 	public void gravity() {
-		if (x + xvel < 0) {
-			x = 0;
-		} else if (x + width + xvel > 960) {
-			x = 960 - width;
-		} else {
-			x += xvel;
-		}
 		if (y + yvel + height > GROUND) {
 			inAir = false;
 			yvel = 0;

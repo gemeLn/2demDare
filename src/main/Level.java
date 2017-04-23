@@ -8,6 +8,7 @@ import java.util.List;
 import entities.AlienCitizen;
 import entities.Entity;
 import entities.Player;
+import entities.Scene;
 import graphics.Screen;
 import graphics.Texture;
 
@@ -18,13 +19,17 @@ public class Level {
 	public static int GROUND = 500;
 	Player player = new Player("/sprites/PlayerSpriteSheet.png", 100, 100);
 	AlienCitizen alien1 = new AlienCitizen("/sprites/teemo.png", 100, 100);
-	Texture cityBG = new Texture("/sprites/city.png", 960, 540);
-	Texture BG = cityBG;
+	Scene city = new Scene("/sprites/city.png");
+	Scene farm = new Scene("/sprites/farm.png");
+	Texture BG = city.getTexture();
 	public List<Entity> entities = new ArrayList<Entity>();
 	Entity dialougeBox = new Entity("/sprites/box.png", 960, 160);
-	public int dialougeTotal = 0;
-	public int dialougeCounter = 0;
-	public String[] dialougeArray;
+	int dialougeTotal = 0;
+	int dialougeCounter = 0;
+	String[] dialougeArray;
+	int currentScene = 0;
+	Scene[] scenes = { city, farm };
+	int totalScenes = scenes.length - 1;
 
 	public Level() {
 		entities.add(player);
@@ -64,6 +69,18 @@ public class Level {
 
 			e.render(screen);
 		}
+	}
+
+	public void nextScene() {
+		currentScene++;
+		if (currentScene > totalScenes) {
+			currentScene = 0;
+		}
+		BG = scenes[currentScene].getTexture();
+
+	}
+
+	public void prevScene() {
 	}
 
 	public void dialouge(String... mes) {

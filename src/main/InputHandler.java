@@ -28,6 +28,9 @@ public class InputHandler extends KeyAdapter {
 		if (e.getKeyCode() == KeyEvent.VK_Q) {
 			player.interact();
 		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			Main.getInstance().level.nextScene();
+		}
 
 	}
 
