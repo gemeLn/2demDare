@@ -24,13 +24,14 @@ public class Level {
 	Texture BG = city.getTexture();
 	public List<Entity> entities = new ArrayList<Entity>();
 	Entity dialougeBox = new Entity("/sprites/box.png", 960, 160);
-	int dialougeTotal = 0;
-	int dialougeCounter = 0;
+	public int dialougeTotal = 0;
+	public int dialougeCounter = 0;
 	String[] dialougeArray;
 	int currentScene = 0;
 	Scene[] scenes = { city, farm };
 	int totalScenes = scenes.length - 1;
-
+	public boolean dialongOver;
+	
 	public Level() {
 		entities.add(player);
 		city.addEntity(new AlienCitizen("/sprites/AlienSheet.png", 96, 96, 600, 0, 2, 60));
@@ -59,6 +60,7 @@ public class Level {
 	public void advance() {
 		if (dialougeCounter == dialougeTotal) {
 			run();
+			dialongOver = true;
 		}
 		dialougeCounter++;
 	}
@@ -100,6 +102,7 @@ public class Level {
 		dialougeTotal = mes.length - 1;
 		dialougeArray = mes;
 		dialougeCounter = 0;
+		dialongOver = true;
 		freeze();
 	}
 }

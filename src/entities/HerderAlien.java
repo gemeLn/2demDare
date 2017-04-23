@@ -12,6 +12,7 @@ public class HerderAlien extends Entity {
 	int tick = 0;
 	int dur;
 	int randomDialog;
+	boolean switchit = false;
 	Random random = new Random();
 	SpriteSheet spriteSheet;
 
@@ -38,6 +39,11 @@ public class HerderAlien extends Entity {
 		}
 		walk();
 		tick++;
+		if(switchit){
+			if(Main.getInstance().level.dialongOver){
+				Main.getInstance().state = Main.State.Herder;
+			}
+		}
 	}
 	
 	public void walk(){
@@ -48,7 +54,7 @@ public class HerderAlien extends Entity {
 		Main.getInstance().level.dialouge("Alien: Hi, can you help me?", 
 				"Me: Sure! Whats wrong","Alien: I am having trouble with"
 						+ "keeping","my animals in the pen. Can you help?", "Ok");
-		Main.getInstance().state = Main.State.Herder;
+		switchit = true;
 	}
 	
 	public void gravity() {
