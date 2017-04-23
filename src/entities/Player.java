@@ -57,11 +57,11 @@ public class Player extends Entity {
 	}
 
 	public void walk() {
-		sprite = spriteSheet.getTexture(tick, dir);
+		sprite = spriteSheet.getTexture(tick/30, dir);
 		tick += 1;
-		System.out.println(tick);
+		System.out.println(tick/30);
 
-		if (tick >= 30) {
+		if (tick >= 900) {
 			tick = 0;
 			walk = false;
 		}
