@@ -83,8 +83,8 @@ public class Level {
 	}
 
 	public void prevScene() {
-		currentScene--;
 		entities.removeAll(scenes[currentScene].getList());
+		currentScene--;
 		if (currentScene < 0) {
 			currentScene = totalScenes;
 		}

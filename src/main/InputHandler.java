@@ -34,7 +34,7 @@ public class InputHandler extends KeyAdapter {
 			player.interact();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			Main.getInstance().level.nextScene();
+			Main.getInstance().state=Main.State.Rancher;
 		}
 
 	}

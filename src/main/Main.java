@@ -1,12 +1,18 @@
 package main;
 
 import main.InputHandler;
-
+import AlienRanch.Rancher;
 import graphics.Screen;
 import graphics.Window;
 
 public class Main {
-	public Main(){
+	enum State {
+		Game, Rancher;
+	}
+
+	public State state = State.Game;
+
+	public Main() {
 		instance = this;
 	}
 
@@ -14,12 +20,15 @@ public class Main {
 	long timeLR = System.currentTimeMillis();
 	double fps = 1000 / 60;
 	public Level level;
+	public Rancher rancher;
 	static Main instance;
+
 	public static Main getInstance() {
 		return instance;
 	}
 
 	private void init() {
+		rancher = new Rancher();
 		level = new Level();
 	}
 
@@ -33,11 +42,18 @@ public class Main {
 
 		while (true) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
-				level.update();
-				level.render(screen);
-				window.update();
-				screen.clear(0xffffff);
-				timeLR=System.currentTimeMillis();
+				if (state == State.Game) {
+					level.update();
+					level.render(screen);
+					window.update();
+					screen.clear(0xffffff);
+				} else if (state == State.Rancher) {
+					rancher.update();
+					rancher.render(screen);
+					window.update();
+					screen.clear(0xffffff);
+				}
+				timeLR = System.currentTimeMillis();
 			}
 		}
 	}
