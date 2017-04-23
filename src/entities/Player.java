@@ -71,6 +71,9 @@ public class Player extends Entity {
 		sprite = spriteSheet.getTexture(tick, dir);
 		System.out.println(tick);
 		tick++;
+		if(xvel != 0){
+			walkReleased = false;
+		}
 	}
 
 }
