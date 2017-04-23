@@ -18,7 +18,6 @@ public class Level {
 	public boolean run = true;
 	public static int GROUND = 500;
 	Player player = new Player("/sprites/PlayerSpriteSheet.png", 100, 100);
-	AlienCitizen alien1 = new AlienCitizen("/sprites/teemo.png", 100, 100);
 	Scene city = new Scene("/sprites/city.png");
 	Scene farm = new Scene("/sprites/farm.png");
 	Texture BG = city.getTexture();
@@ -33,7 +32,8 @@ public class Level {
 
 	public Level() {
 		entities.add(player);
-		entities.add(alien1);
+		city.addEntity(new AlienCitizen("/sprites/teemo.png", 100, 100));
+		entities.addAll(city.getList());
 	}
 
 	public void freeze() {
@@ -72,20 +72,24 @@ public class Level {
 	}
 
 	public void nextScene() {
+		entities.removeAll(scenes[currentScene].getList());
 		currentScene++;
 		if (currentScene > totalScenes) {
 			currentScene = 0;
 		}
 		BG = scenes[currentScene].getTexture();
+		entities.addAll(scenes[currentScene].getList());
 
 	}
 
 	public void prevScene() {
 		currentScene--;
+		entities.removeAll(scenes[currentScene].getList());
 		if (currentScene < 0) {
 			currentScene = totalScenes;
 		}
 		BG = scenes[currentScene].getTexture();
+		entities.addAll(scenes[currentScene].getList());
 	}
 
 	public void dialouge(String... mes) {
