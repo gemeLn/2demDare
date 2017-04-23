@@ -10,7 +10,7 @@ import main.Level;
 public class Entity {
 	public Hitbox hitbox = new Hitbox(3, 0, 0, 64, 64, 100);
 	public ArrayList<Hitbox> hurtArray = new ArrayList<>();
-	public int x, y, xvel, yvel, width, height = 0;
+	public int x, y, xvel, yvel, width, height = 0, dir;
 	public Texture sprite;
 	public int GROUND = Level.GROUND;
 	public boolean inAir = true;

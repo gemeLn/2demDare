@@ -22,6 +22,7 @@ public class Player extends Entity {
 		jumpHeight = 15;
 		sprite = spriteSheet.getTexture(0, 0);
 		tick = 0;
+		dir = 0;
 	}
 
 	public void update() {
@@ -56,7 +57,7 @@ public class Player extends Entity {
 	}
 
 	public void walk() {
-		sprite = spriteSheet.getTexture(tick, 0);
+		sprite = spriteSheet.getTexture(tick, dir);
 		tick += 1;
 		System.out.println(tick);
 
