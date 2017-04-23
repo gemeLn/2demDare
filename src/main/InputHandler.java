@@ -17,10 +17,11 @@ public class InputHandler extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			player.xvel = -player.moveSpeed;
+			player.walk = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			player.xvel = player.moveSpeed;
-
+			player.walk = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			player.jump();

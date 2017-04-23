@@ -10,19 +10,26 @@ public class Player extends Entity {
 	public int moveSpeed = 5;
 
 	public boolean inAir = true;
+	static SpriteSheet spriteSheet;
+	public static boolean walk = false;
+	int tick;
 
 	public Player(String link, int width, int height) {
 		super(link, 2880, 192);
-		SpriteSheet spriteSheet = new SpriteSheet(sprite, 96, 96);
+		spriteSheet = new SpriteSheet(sprite, 96, 96);
 		this.width = width;
 		this.height = height;
 		jumpHeight = 15;
 		sprite = spriteSheet.getTexture(0,0);
+		tick = 0;
 	}
 
 	public void update() {
 
 		gravity();
+		//if (walk){
+			walk();
+	//	}
 
 	}
 
@@ -37,6 +44,17 @@ public class Player extends Entity {
 					break;
 				}
 			}
+		}
+	}
+	
+	public void walk(){
+		sprite = spriteSheet.getTexture(tick, 0);
+		tick += 1;
+		System.out.println(tick);
+			
+		if(tick >= 30) {
+			tick = 0;
+			walk = false;
 		}
 	}
 
