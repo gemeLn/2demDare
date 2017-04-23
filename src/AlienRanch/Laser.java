@@ -41,7 +41,7 @@ public class Laser {
 		} 
 		else if (tick == 35) {
 			sprite = sheet.getTexture(6, 0);
-		} else if (tick == 60) {
+		} else if (tick == 42) {
 			tick = 0;
 			sprite = sheet.getTexture(0, 0);
 			Main.getInstance().rancher.laserOn = false;
