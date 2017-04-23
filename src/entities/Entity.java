@@ -38,8 +38,10 @@ public class Entity {
 	}
 
 	public void jump() {
-		inAir = true;
-		yvel = -jumpHeight;
+		if (!inAir) {
+			inAir = true;
+			yvel = -jumpHeight;
+		}
 	}
 
 	public void gravity() {
