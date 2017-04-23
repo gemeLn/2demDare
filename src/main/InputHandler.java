@@ -2,22 +2,50 @@ package main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import java.util.Set;
 
+import Herder.IGPlayer;
 import entities.Player;
 
 public class InputHandler extends KeyAdapter {
 	Player player;
+	IGPlayer playerMini;
 
 	public InputHandler(Player p) {
 		player = p;
+		playerMini = Main.getInstance().herder.player;
 	}
 
 	public void HerderPress(int e) {
+		if (e == KeyEvent.VK_LEFT){
+			playerMini.xvel = -playerMini.moveSpeed;
+			playerMini.sprite = playerMini.spriteSheet.getTexture(3,0);
+		}if (e == KeyEvent.VK_RIGHT){
+			playerMini.xvel = playerMini.moveSpeed;
+			playerMini.sprite = playerMini.spriteSheet.getTexture(1,0);
+		}if (e == KeyEvent.VK_UP){
+			playerMini.yvel = -playerMini.moveSpeed;
+			playerMini.sprite = playerMini.spriteSheet.getTexture(0,0);
+		}if (e == KeyEvent.VK_DOWN){
+			playerMini.yvel = playerMini.moveSpeed;
+			playerMini.sprite = playerMini.spriteSheet.getTexture(2,0);
+		}
 	}
 
 	public void HerderRelease(int e) {
+		if (e == KeyEvent.VK_LEFT) {
+			if (playerMini.xvel < 0)
+				playerMini.xvel = 0;
+		} else if (e == KeyEvent.VK_RIGHT) {
+			if (playerMini.xvel > 0)
+				playerMini.xvel = 0;
+		}else if (e == KeyEvent.VK_UP) {
+			if (playerMini.yvel < 0)
+				playerMini.yvel = 0;
+		} else if (e == KeyEvent.VK_DOWN) {
+			if (playerMini.yvel > 0)
+				playerMini.yvel = 0;
+
+		}
 	}
 
 	public void CityPress(int e) {

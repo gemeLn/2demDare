@@ -1,9 +1,9 @@
 package entities;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 import graphics.Screen;
+import graphics.SpriteSheet;
 import graphics.Texture;
 import main.Level;
 
@@ -15,6 +15,8 @@ public class Entity {
 	public int GROUND = Level.GROUND;
 	public boolean inAir = true;
 	public int jumpHeight = 10;
+	public int moveSpeed;
+	public SpriteSheet spriteSheet;
 
 	public Entity(String link, int width, int height) {
 		sprite = new Texture(link, width, height);
