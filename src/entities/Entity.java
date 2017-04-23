@@ -8,7 +8,6 @@ import graphics.Texture;
 import main.Level;
 
 public class Entity {
-	public Hitbox hitbox;
 	public ArrayList<Hitbox> hurtArray = new ArrayList<>();
 	public int x, y, xvel, yvel, width, height = 0, dir;
 	public Texture sprite;
@@ -18,6 +17,7 @@ public class Entity {
 	public int moveSpeed;
 	public SpriteSheet spriteSheet;
 	public boolean inHit;
+	public Hitbox hitbox = new Hitbox(3, 0, 0, 0, 0, 100);
 
 	public Entity(String link, int width, int height) {
 		sprite = new Texture(link, width, height);
