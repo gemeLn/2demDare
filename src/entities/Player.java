@@ -12,8 +12,8 @@ public class Player extends Entity {
 	public boolean inAir = true;
 
 	public Player(String link, int width, int height) {
-		super(link, 960, 64);
-		SpriteSheet spriteSheet = new SpriteSheet(sprite, 32, 32);
+		super(link, 2880, 192);
+		SpriteSheet spriteSheet = new SpriteSheet(sprite, 96, 96);
 		this.width = width;
 		this.height = height;
 		jumpHeight = 15;
