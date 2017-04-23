@@ -12,6 +12,7 @@ public class Player extends Entity {
 	public boolean inAir = true;
 	static SpriteSheet spriteSheet;
 	public static boolean walk = false;
+	public static boolean walkReleased = false;
 	int tick;
 
 	public Player(String link, int width, int height) {
@@ -36,9 +37,9 @@ public class Player extends Entity {
 			x += xvel;
 		}
 		gravity();
-		// if (walk){
-		walk();
-		// }
+		if (walk){
+			walk();
+		}
 
 	}
 
@@ -57,14 +58,19 @@ public class Player extends Entity {
 	}
 
 	public void walk() {
-		sprite = spriteSheet.getTexture(tick/30, dir);
-		tick += 1;
-		System.out.println(tick/30);
-
-		if (tick >= 900) {
-			tick = 0;
-			walk = false;
+		if (tick == 14){
+			if(walkReleased)
+				walk = false;
 		}
+		
+		if (tick >= 30) {
+			tick = 0;
+			if(walkReleased)
+				walk = false;
+		}
+		sprite = spriteSheet.getTexture(tick, dir);
+		System.out.println(tick);
+		tick++;
 	}
 
 }

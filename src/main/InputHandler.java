@@ -18,10 +18,14 @@ public class InputHandler extends KeyAdapter {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			player.xvel = -player.moveSpeed;
 			player.walk = true;
+			player.dir = 1;
+			System.out.println("left");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			player.xvel = player.moveSpeed;
 			player.walk = true;
+			player.dir = 0;
+			System.out.println("right");
 		}
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			player.jump();
@@ -37,11 +41,14 @@ public class InputHandler extends KeyAdapter {
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			player.walkReleased = true;
 			if (player.xvel < 0)
 				player.xvel = 0;
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			player.walkReleased = true;
 			if (player.xvel > 0)
 				player.xvel = 0;
+			
 		}
 
 	}
