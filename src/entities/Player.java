@@ -20,6 +20,7 @@ public class Player extends Entity {
 		spriteSheet = new SpriteSheet(sprite, 96, 96);
 		this.width = width;
 		this.height = 96;
+		hitbox = new Hitbox(3, 0, 0, 64, 64, 100);
 		jumpHeight = 15;
 		sprite = spriteSheet.getTexture(0, 0);
 		tick = 0;

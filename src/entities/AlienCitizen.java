@@ -21,6 +21,7 @@ public class AlienCitizen extends Entity {
 		this.x = x;
 		this.y = y;
 		this.moveSpeed = moveSpeed;
+		hitbox = new Hitbox(3, 0, 0, 64, 64, 100);
 		this.dur = dur;
 		xvel = moveSpeed;
 		sprite = spriteSheet.getTexture(0, 0);
