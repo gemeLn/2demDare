@@ -1,5 +1,7 @@
 package AlienRanch;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,8 +11,10 @@ import java.util.TimerTask;
 import entities.Entity;
 import graphics.Screen;
 import graphics.Texture;
+import main.Main;
 
 public class Rancher {
+	Font font = new Font("Sans-Serif", 1, 30);
 	public boolean laserOn = false;
 	Laser laser = new Laser();
 	Timer timer = new Timer();
@@ -23,13 +27,27 @@ public class Rancher {
 	ArrayList<Spider> remove = new ArrayList<Spider>();
 	public Aim aim = new Aim();
 	int spiderCount;
+	final int totalTick = 1000;
+	int timerTick = totalTick;
+
+	public String tickToTime(int tick) {
+		int total = (int) (tick / 60);
+		int minutes = (int) (total / 60);
+		String seconds = String.valueOf(total - 60 * minutes);
+		if (seconds.length() == 1) {
+			seconds = "0" + seconds;
+		}
+		return String.valueOf(minutes) + ":" + seconds;
+
+	}
 
 	public Rancher() {
 		bg = new Texture("/sprites/ranch.png", 960, 540);
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 9; i++) {
 			spiders.add(new Spider());
 		}
 		spiderCount = spiders.size();
+		timerTick = totalTick;
 	}
 
 	public void clear() {
@@ -53,11 +71,17 @@ public class Rancher {
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
 							remove.add(e);
+							spiderCount--;
+							if (spiderCount == 0) {
+								Main.getInstance().state = Main.State.City;
+								Main.getInstance().level.dialouge("Wow you sure killed them quickly",
+										"Thanks for the help here is something to pay you back");
+							}
 						}
 					}
 					clear();
 				}
-			}, 500);
+			}, 400);
 			lastfired = System.currentTimeMillis();
 		}
 	}
@@ -71,9 +95,16 @@ public class Rancher {
 		if (laserOn) {
 			laser.render(screen);
 		}
+		screen.drawString(tickToTime(timerTick), 470, 50, font, Color.RED);
 	}
 
 	public void update() {
+		timerTick--;
+		if (timerTick == 0) {
+			Main.getInstance().state = Main.State.City;
+			Main.getInstance().level.dialouge("That's too bad, you didn't kill them all in time",
+					"Those pesky pests will stay there forever");
+		}
 		aim.update();
 		for (Entity e : spiders) {
 			e.update();

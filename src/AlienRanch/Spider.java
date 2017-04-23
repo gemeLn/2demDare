@@ -32,8 +32,8 @@ public class Spider extends Entity {
 		tick++;
 		if (tick > 30) {
 			tick = 0;
-			xvel = sign() * (r.nextInt(4) + 1);
-			yvel = sign() * r.nextInt(4) + 1;
+			xvel = sign() * (r.nextInt(3) + 1);
+			yvel = sign() * r.nextInt(3) + 1;
 		}
 
 		if (x + xvel < 0) {

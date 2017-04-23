@@ -65,7 +65,7 @@ public class Level {
 		screen.drawTexture(0, 0, BG);
 		if (!run) {
 			dialougeBox.render(screen);
-			screen.drawString(dialougeArray[dialougeCounter], 100, 100, font, Color.black);
+			screen.drawString(dialougeArray[dialougeCounter], 100, 90, font, Color.black);
 		}
 		for (int i = 1; i < entities.size(); i++) {
 			entities.get(i).render(screen);

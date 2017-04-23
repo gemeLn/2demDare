@@ -6,7 +6,7 @@ import graphics.Screen;
 import graphics.Window;
 
 public class Main {
-	enum State {
+	public enum State {
 		City, Rancher, Herder;
 	}
 
@@ -32,6 +32,11 @@ public class Main {
 		rancher = new Rancher();
 		level = new Level();
 		herder = new Herder();
+	}
+
+	public void startRancher() {
+		state = State.Rancher;
+		rancher = new Rancher();
 	}
 
 	private void loop() {
