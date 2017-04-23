@@ -1,4 +1,4 @@
-package AlienRanch;
+package rancher;
 
 import entities.Entity;
 

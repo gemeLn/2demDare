@@ -3,8 +3,8 @@ package main;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import Herder.IGPlayer;
 import entities.Player;
+import herder.IGPlayer;
 
 public class InputHandler extends KeyAdapter {
 	Player player;

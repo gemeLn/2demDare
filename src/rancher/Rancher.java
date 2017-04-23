@@ -1,4 +1,4 @@
-package AlienRanch;
+package rancher;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -42,7 +42,7 @@ public class Rancher {
 	}
 
 	public Rancher() {
-		bg = new Texture("/sprites/ranch.png", 960, 540);
+		bg = new Texture("/sprites/sewers.png", 960, 540);
 		for (int i = 0; i < 9; i++) {
 			spiders.add(new Spider());
 		}

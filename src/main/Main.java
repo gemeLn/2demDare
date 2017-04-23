@@ -1,9 +1,9 @@
 package main;
 
-import AlienRanch.Rancher;
-import Herder.Herder;
 import graphics.Screen;
 import graphics.Window;
+import herder.Herder;
+import rancher.Rancher;
 
 public class Main {
 	public enum State {
