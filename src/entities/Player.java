@@ -19,7 +19,7 @@ public class Player extends Entity {
 		super(link, 2880, 192);
 		spriteSheet = new SpriteSheet(sprite, 96, 96);
 		this.width = width;
-		this.height = height;
+		this.height = 96;
 		jumpHeight = 15;
 		sprite = spriteSheet.getTexture(0, 0);
 		tick = 0;
@@ -69,7 +69,7 @@ public class Player extends Entity {
 				walk = false;
 		}
 		sprite = spriteSheet.getTexture(tick, dir);
-		System.out.println(tick);
+		//System.out.println(tick);
 		tick++;
 		if(xvel != 0){
 			walkReleased = false;

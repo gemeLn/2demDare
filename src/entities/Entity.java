@@ -46,6 +46,7 @@ public class Entity {
 
 	public void gravity() {
 		if (y + yvel + height > GROUND) {
+			//System.out.println(y + yvel + height);
 			inAir = false;
 			yvel = 0;
 			y = GROUND - height;

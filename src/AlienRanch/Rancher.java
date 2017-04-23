@@ -42,21 +42,18 @@ public class Rancher {
 			tempx = aim.x;
 			tempy = aim.y;
 			timer.schedule(new TimerTask() {
-
-				@Override
 				public void run() {
 					System.out.println("fire");
 					for (Spider e : spiders) {
 						laserOn = true;
-						laser.x = tempx - laser.w / 2 + aim.width / 2;
-						laser.y = tempy - laser.h + aim.height / 2;
+						laser.x = tempx - laser.w / 2;
+						laser.y = tempy - laser.h;
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
 							remove.add(e);
 						}
 					}
 					clear();
-
 				}
 			}, 500);
 			lastfired = System.currentTimeMillis();

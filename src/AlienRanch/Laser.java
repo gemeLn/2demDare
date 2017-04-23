@@ -24,27 +24,25 @@ public class Laser {
 	long tick = 0;
 
 	public void update() {
-		tick++;
-		if (tick == 10) {
+		if (tick == 0) {
+			sprite = sheet.getTexture(0, 0);
+		} else if (tick == 10) {
 			sprite = sheet.getTexture(1, 0);
 		} else if (tick == 13) {
 			sprite = sheet.getTexture(2, 0);
-		} 
-		else if (tick == 17) {
+		} else if (tick == 17) {
 			sprite = sheet.getTexture(3, 0);
-		} 
-		else if (tick == 22) {
+		} else if (tick == 22) {
 			sprite = sheet.getTexture(4, 0);
-		}
-		else if (tick == 29) {
+		} else if (tick == 29) {
 			sprite = sheet.getTexture(5, 0);
-		} 
-		else if (tick == 35) {
+		} else if (tick == 35) {
 			sprite = sheet.getTexture(6, 0);
 		} else if (tick == 42) {
 			tick = 0;
 			sprite = sheet.getTexture(0, 0);
 			Main.getInstance().rancher.laserOn = false;
 		}
+		tick++;
 	}
 }

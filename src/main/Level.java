@@ -32,7 +32,7 @@ public class Level {
 
 	public Level() {
 		entities.add(player);
-		city.addEntity(new AlienCitizen("/sprites/teemo.png", 100, 100));
+		city.addEntity(new AlienCitizen("/sprites/AlienSheet.png", 96, 96));
 		entities.addAll(city.getList());
 	}
 
@@ -65,10 +65,10 @@ public class Level {
 			dialougeBox.render(screen);
 			screen.drawString(dialougeArray[dialougeCounter], 100, 100, font, Color.black);
 		}
-		for (Entity e : entities) {
-
-			e.render(screen);
+		for (int i = 1; i < entities.size(); i++) {
+			entities.get(i).render(screen);
 		}
+		entities.get(0).render(screen);
 	}
 
 	public void nextScene() {

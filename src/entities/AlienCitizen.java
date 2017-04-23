@@ -2,28 +2,44 @@ package entities;
 
 import java.util.Random;
 
+import graphics.SpriteSheet;
 import main.Main;
 
 public class AlienCitizen extends Entity {
-	private int GROUND = 300;
 	public int height = 100;
 	public int width = 100;
+	public int moveSpeed = 2;
+	int tick = 0;
 	int randomDialog;
 	Random random = new Random();
+	SpriteSheet spriteSheet;
 
 	public AlienCitizen(String link, int width, int height) {
-		super(link, width, height);
-		this.height = height;
-		this.width = width;
+		super(link, 384, 192);
+		spriteSheet = new SpriteSheet(sprite, 96, 96);
 		x = 600;
-		y = 500;
+		y = 0;
+		xvel = moveSpeed;
+		sprite = spriteSheet.getTexture(0, 0);
 	}
 
 	public void update() {
+		x += xvel;
+		System.out.println(y + yvel + height);
 		gravity();
-		hitbox.update(x, y);
+		if(tick > 100){
+			tick = 0;
+			xvel *= -1;
+			dir += 1 - (dir*2);
+		}
+		walk();
+		tick++;
 	}
-
+	
+	public void walk(){
+		sprite = spriteSheet.getTexture((tick/10)%4, dir);
+	}
+	
 	public void interact() {
 		randomDialog = random.nextInt(4);
 		switch(randomDialog){
@@ -45,5 +61,19 @@ public class AlienCitizen extends Entity {
 		}
 		
 
+	}
+	
+	public void gravity() {
+		if (y + yvel + height > GROUND) {
+			inAir = false;
+			yvel = 0;
+			y = GROUND - height;
+		} else {
+			if (inAir) {
+				yvel++;
+			}
+		}
+		y += yvel;
+		hitbox.update(x, y);
 	}
 }
