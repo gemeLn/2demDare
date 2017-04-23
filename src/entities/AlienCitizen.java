@@ -8,26 +8,29 @@ import main.Main;
 public class AlienCitizen extends Entity {
 	public int height = 100;
 	public int width = 100;
-	public int moveSpeed = 2;
+	public int moveSpeed;
 	int tick = 0;
+	int dur;
 	int randomDialog;
 	Random random = new Random();
 	SpriteSheet spriteSheet;
 
-	public AlienCitizen(String link, int width, int height) {
+	public AlienCitizen(String link, int width, int height, int x, int y, int moveSpeed, int dur) {
 		super(link, 384, 192);
 		spriteSheet = new SpriteSheet(sprite, 96, 96);
-		x = 600;
-		y = 0;
+		this.x = x;
+		this.y = y;
+		this.moveSpeed = moveSpeed;
+		this.dur = dur;
 		xvel = moveSpeed;
 		sprite = spriteSheet.getTexture(0, 0);
 	}
 
 	public void update() {
 		x += xvel;
-		System.out.println(y + yvel + height);
+		//System.out.println(y + yvel + height);
 		gravity();
-		if(tick > 100){
+		if(tick > dur){
 			tick = 0;
 			xvel *= -1;
 			dir += 1 - (dir*2);

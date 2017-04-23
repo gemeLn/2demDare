@@ -32,7 +32,9 @@ public class Level {
 
 	public Level() {
 		entities.add(player);
-		city.addEntity(new AlienCitizen("/sprites/AlienSheet.png", 96, 96));
+		city.addEntity(new AlienCitizen("/sprites/AlienSheet.png", 96, 96, 600, 0, 2, 60));
+		city.addEntity(new AlienCitizen("/sprites/Alien2Sheet.png", 96, 96, 300, 0, 1, 90));
+		city.addEntity(new AlienCitizen("/sprites/Alien3Sheet.png", 96, 96, 400, 0, 3, 110));
 		entities.addAll(city.getList());
 	}
 
