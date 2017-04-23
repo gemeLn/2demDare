@@ -13,6 +13,8 @@ public class Spider extends Entity {
 
 	public Spider() {
 		super("/sprites/spider.png", 200, 100);
+		x = 10;
+		y = 150;
 		sheet = new SpriteSheet(sprite, 100, 100);
 		sprite = sheet.getTexture(0, 0);
 	}
@@ -28,8 +30,8 @@ public class Spider extends Entity {
 		tick++;
 		if (tick > 30) {
 			tick = 0;
-			xvel = sign() * (r.nextInt(7) + 1);
-			yvel = sign() * r.nextInt(7);
+			xvel = sign() * (r.nextInt(2) + 1);
+			yvel = sign() * r.nextInt(2);
 		}
 
 		if (x + xvel < 0) {
@@ -39,14 +41,14 @@ public class Spider extends Entity {
 		} else {
 			x += xvel;
 		}
-		if (y + yvel < 0) {
-			y = 0;
+		if (y + yvel < 80) {
+			y = 80;
 		} else if (y + height + yvel > 540) {
 			y = 540 - height;
 		} else {
 			y += yvel;
 		}
-
+		hitbox.update(x, y);
 	}
 
 }

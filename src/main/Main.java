@@ -7,10 +7,10 @@ import graphics.Window;
 
 public class Main {
 	enum State {
-		Game, Rancher;
+		City, Rancher;
 	}
 
-	public State state = State.Game;
+	public State state = State.City;
 
 	public Main() {
 		instance = this;
@@ -42,7 +42,7 @@ public class Main {
 
 		while (true) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
-				if (state == State.Game) {
+				if (state == State.City) {
 					level.update();
 					level.render(screen);
 					window.update();
