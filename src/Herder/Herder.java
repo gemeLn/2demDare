@@ -1,10 +1,11 @@
-package Herder;
+package herder;
 
 import java.util.ArrayList;
 
 import entities.Entity;
 import entities.Hitbox;
 import graphics.Screen;
+import graphics.Texture;
 import main.Main;
 
 public class Herder {
@@ -12,6 +13,7 @@ public class Herder {
 	public IGPlayer player = new IGPlayer();
 	public Hitbox hitbox;
 	boolean gameEnd;
+	Texture BG = new Texture("/sprites/ranch.png", 960, 540);
 
 	public Herder() {
 
@@ -40,6 +42,7 @@ public class Herder {
 	}
 
 	public void render(Screen screen) {
+		screen.drawTexture(0, 0, BG);
 		for (Entity e : entities) {
 			e.render(screen);
 		}

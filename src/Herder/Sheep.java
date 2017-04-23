@@ -1,4 +1,4 @@
-package Herder;
+package herder;
 
 import java.util.Random;
 
