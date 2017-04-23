@@ -42,6 +42,7 @@ public class HerderAlien extends Entity {
 		if(switchit){
 			if(Main.getInstance().level.dialongOver){
 				Main.getInstance().state = Main.State.Herder;
+				switchit = false;
 			}
 		}
 	}

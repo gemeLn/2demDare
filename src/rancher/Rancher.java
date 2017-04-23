@@ -27,7 +27,7 @@ public class Rancher {
 	ArrayList<Spider> remove = new ArrayList<Spider>();
 	public Aim aim = new Aim();
 	int spiderCount;
-	final int totalTick = 1000;
+	final int totalTick = 3660;
 	int timerTick = totalTick;
 
 	public String tickToTime(int tick) {
