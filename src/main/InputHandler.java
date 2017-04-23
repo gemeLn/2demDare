@@ -69,7 +69,7 @@ public class InputHandler extends KeyAdapter {
 			player.interact();
 		}
 		if (e == KeyEvent.VK_DOWN) {
-			Main.getInstance().state = Main.State.Rancher;
+			Main.getInstance().startRancher();
 		}
 		if (e == KeyEvent.VK_SPACE) {
 			Main.getInstance().state = Main.State.Herder;
