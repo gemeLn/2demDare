@@ -14,6 +14,12 @@ public class InputHandler extends KeyAdapter {
 		player = p;
 	}
 
+	public void HerderPress(int e) {
+	}
+
+	public void HerderRelease(int e) {
+	}
+
 	public void CityPress(int e) {
 		if (e == KeyEvent.VK_LEFT) {
 			player.xvel = -player.moveSpeed;
@@ -33,6 +39,9 @@ public class InputHandler extends KeyAdapter {
 		}
 		if (e == KeyEvent.VK_DOWN) {
 			Main.getInstance().state = Main.State.Rancher;
+		}
+		if (e == KeyEvent.VK_SPACE) {
+			Main.getInstance().state = Main.State.Herder;
 		}
 	}
 
@@ -92,6 +101,8 @@ public class InputHandler extends KeyAdapter {
 			CityPress(e.getKeyCode());
 		} else if (Main.getInstance().state == Main.State.Rancher) {
 			RancherPress(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Herder) {
+			HerderPress(e.getKeyCode());
 		}
 
 	}
@@ -99,8 +110,8 @@ public class InputHandler extends KeyAdapter {
 	public void keyReleased(KeyEvent e) {
 		if (Main.getInstance().state == Main.State.City) {
 			CityRelease(e.getKeyCode());
-		} else if (Main.getInstance().state == Main.State.Rancher) {
-			RancherRelease(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Herder) {
+			HerderRelease(e.getKeyCode());
 		}
 	}
 

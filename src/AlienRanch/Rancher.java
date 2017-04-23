@@ -22,12 +22,14 @@ public class Rancher {
 	ArrayList<Spider> spiders = new ArrayList<Spider>();
 	ArrayList<Spider> remove = new ArrayList<Spider>();
 	public Aim aim = new Aim();
+	int spiderCount;
 
 	public Rancher() {
 		bg = new Texture("/sprites/ranch.png", 960, 540);
 		for (int i = 0; i < 7; i++) {
 			spiders.add(new Spider());
 		}
+		spiderCount = spiders.size();
 	}
 
 	public void clear() {
@@ -44,10 +46,10 @@ public class Rancher {
 			timer.schedule(new TimerTask() {
 				public void run() {
 					System.out.println("fire");
+					laserOn = true;
+					laser.x = tempx - laser.w / 2;
+					laser.y = tempy - laser.h;
 					for (Spider e : spiders) {
-						laserOn = true;
-						laser.x = tempx - laser.w / 2;
-						laser.y = tempy - laser.h;
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
 							remove.add(e);
@@ -65,7 +67,7 @@ public class Rancher {
 		for (Spider e : spiders) {
 			e.render(screen);
 		}
-		screen.drawTexture(aim.x-30, aim.y-30, aim.sprite);
+		screen.drawTexture(aim.x - 30, aim.y - 30, aim.sprite);
 		if (laserOn) {
 			laser.render(screen);
 		}

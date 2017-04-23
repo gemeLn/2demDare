@@ -1,13 +1,13 @@
 package main;
 
-import main.InputHandler;
 import AlienRanch.Rancher;
+import Herder.Herder;
 import graphics.Screen;
 import graphics.Window;
 
 public class Main {
 	enum State {
-		City, Rancher;
+		City, Rancher, Herder;
 	}
 
 	public State state = State.City;
@@ -21,6 +21,7 @@ public class Main {
 	double fps = 1000 / 60;
 	public Level level;
 	public Rancher rancher;
+	public Herder herder;
 	static Main instance;
 
 	public static Main getInstance() {
@@ -30,6 +31,7 @@ public class Main {
 	private void init() {
 		rancher = new Rancher();
 		level = new Level();
+		herder = new Herder();
 	}
 
 	private void loop() {
@@ -39,7 +41,6 @@ public class Main {
 		window.update();
 		window.addKeyListener(new InputHandler(level.player));
 		Screen screen = window.getScreen();
-
 		while (true) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
 				if (state == State.City) {
@@ -50,6 +51,11 @@ public class Main {
 				} else if (state == State.Rancher) {
 					rancher.update();
 					rancher.render(screen);
+					window.update();
+					screen.clear(0xffffff);
+				} else if (state == State.Herder) {
+					herder.update();
+					herder.render(screen);
 					window.update();
 					screen.clear(0xffffff);
 				}
