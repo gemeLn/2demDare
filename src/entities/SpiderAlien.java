@@ -55,9 +55,11 @@ public class SpiderAlien extends Entity {
 
 	public void interact() {
 		if (dialogOnce) {
-			Main.getInstance().level.dialouge("Alien: Hi, can you help me?", "Me: Sure! Whats wrong",
-					"Alien: There are so many spiders " + "in the sewer.",
-					"Can you use this laser to extermiate them?");
+			Main.getInstance().level.dialouge("Blue Alien: Hi, can you help me?", "Me: Sure! Whats wrong",
+					"Blue Alien: There are so many spider,",
+					"Blue Alien: in the sewer. " +"Can you use this",
+					"Blue Alien: laser to extermiate them?",
+					"Me: Sure!i");
 			switchit = true;
 		} else{
 			Main.getInstance().level.dialouge("Thanks again!");

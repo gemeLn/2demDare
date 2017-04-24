@@ -21,8 +21,9 @@ public class Rancher {
 	Timer timer = new Timer();
 	long lastfired = 0;
 	int delay = 1000;
+	boolean gameStart;
 	int tempx, tempy;
-	Texture bg;
+	Texture bg, help;
 	Random r = new Random();
 	ArrayList<Spider> spiders = new ArrayList<Spider>();
 	ArrayList<Spider> remove = new ArrayList<Spider>();
@@ -44,12 +45,14 @@ public class Rancher {
 	}
 
 	public Rancher() {
+		gameStart = false;
 		bg = new Texture("/sprites/sewers.png", 960, 540);
 		for (int i = 0; i < 9; i++) {
 			spiders.add(new Spider());
 		}
 		spiderCount = spiders.size();
 		timerTick = totalTick;
+		help = new Texture("/sprites/instructions.spider.png", 960, 540);
 		//soundPlayer = new SoundPlayer("/sounds/ow.mp3");
 	}
 
@@ -73,13 +76,14 @@ public class Rancher {
 					for (Spider e : spiders) {
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
-							//soundPlayer.play();
+						//	soundPlayer.play();
 							remove.add(e);
 							spiderCount--;
 							if (spiderCount == 0) {
 								Main.getInstance().state = Main.State.City;
 								Main.getInstance().level.dialouge("Wow you sure killed them quickly",
 										"Thanks for the help here is something to pay you back");
+								Main.getInstance().level.core++;
 							}
 						}
 					}
@@ -91,6 +95,7 @@ public class Rancher {
 	}
 
 	public void render(Screen screen) {
+		if(gameStart){
 		screen.drawTexture(0, 0, bg);
 		for (Spider e : spiders) {
 			e.render(screen);
@@ -100,9 +105,12 @@ public class Rancher {
 			laser.render(screen);
 		}
 		screen.drawString(tickToTime(timerTick), 470, 50, font, Color.RED);
+		}else
+			screen.drawTexture(0, 0, help);
 	}
 
 	public void update() {
+		if(gameStart){
 		timerTick--;
 		if (timerTick == 0) {
 			Main.getInstance().state = Main.State.City;
@@ -115,6 +123,7 @@ public class Rancher {
 		}
 		if (laserOn) {
 			laser.update();
+		}
 		}
 	}
 

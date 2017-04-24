@@ -18,19 +18,19 @@ public class IGPlayer extends Entity {
 		sprite = spriteSheet.getTexture(0, 0);
 		x = 50;
 		y = 50;
-		hitboxes.add(new Hitbox(3, 0, 0, 40, 160, 100));
-		hitboxes.add(new Hitbox(3, 0, 0, 40, 160, 100));
-		hitboxes.add(new Hitbox(3, 0, 0, 160, 40, 100));
-		hitboxes.add(new Hitbox(3, 0, 0, 160, 40, 100));
+		hitboxes.add(new Hitbox(3, 0, 0, 20, 160, 100));
+		hitboxes.add(new Hitbox(3, 0, 0, 20, 160, 100));
+		hitboxes.add(new Hitbox(3, 0, 0, 160, 20, 100));
+		hitboxes.add(new Hitbox(3, 0, 0, 160, 20, 100));
 		moveSpeed = 5;
 	}
 
 	public void update() {
 		tick++; 
-		hitboxes.get(0).update(x + 80, y - 40);
+		hitboxes.get(0).update(x + 100, y - 40);
 		hitboxes.get(1).update(x - 40, y - 40);
 		hitboxes.get(2).update(x - 40, y - 40);
-		hitboxes.get(3).update(x - 40, y + 80);
+		hitboxes.get(3).update(x - 40, y + 100);
 
 		if (x + xvel < -5 || x + xvel > 885)
 			x -= xvel;

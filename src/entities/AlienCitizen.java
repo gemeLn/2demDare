@@ -12,10 +12,11 @@ public class AlienCitizen extends Entity {
 	int tick = 0;
 	int dur;
 	int randomDialog;
+	String color;
 	Random random = new Random();
 	SpriteSheet spriteSheet;
 
-	public AlienCitizen(String link, int width, int height, int x, int y, int moveSpeed, int dur) {
+	public AlienCitizen(String link, int width, int height, int x, int y, int moveSpeed, int dur, String color) {
 		super(link, 384, 192);
 		spriteSheet = new SpriteSheet(sprite, 96, 96);
 		this.x = x;
@@ -24,6 +25,7 @@ public class AlienCitizen extends Entity {
 		hitbox = new Hitbox(3, 0, 0, 64, 64, 100);
 		this.dur = dur;
 		xvel = moveSpeed;
+		this.color = color;
 		sprite = spriteSheet.getTexture(0, 0);
 	}
 
@@ -48,19 +50,19 @@ public class AlienCitizen extends Entity {
 		randomDialog = random.nextInt(4);
 		switch(randomDialog){
 		case 0:
-			Main.getInstance().level.dialouge("Alien: Hello Human", "Me: Wasup");
+			Main.getInstance().level.dialouge(color + " Alien: Hello Human", "Me: Wasup");
 			break;
 		case 1:
-			Main.getInstance().level.dialouge("Alien: Who are you?", "Me: Human...");
+			Main.getInstance().level.dialouge(color + " Alien: Who are you?", "Me: Human...");
 			break;
 		case 2:
-			Main.getInstance().level.dialouge("Alien: ...", "Me: ...");
+			Main.getInstance().level.dialouge(color + " Alien: ...", "Me: ...");
 			break;
 		case 3:
-			Main.getInstance().level.dialouge("Alien: Lmao", "Me: ??");
+			Main.getInstance().level.dialouge(color + " Alien: Lmao", "Me: ??");
 			break;
 		case 4:
-			Main.getInstance().level.dialouge("Alien: Pranked", "Me: Where is camera?");
+			Main.getInstance().level.dialouge(color +"  Alien: Pranked", "Me: Where is camera?");
 			break;
 		}
 		

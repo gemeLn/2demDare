@@ -55,9 +55,9 @@ public class HerderAlien extends Entity {
 	
 	public void interact() {
 		if(dialogOnce){
-		Main.getInstance().level.dialouge("Alien: Hi, can you help me?", 
-				"Me: Sure! Whats wrong","Alien: I am having trouble with"
-						+ "keeping","my animals in the pen. Can you help?", "Ok");
+		Main.getInstance().level.dialouge("Yellow Alien: Hi, can you help me?", 
+				"Me: Sure! Whats wrong","Yellow Alien: I am having trouble with keeping"
+				,"Yellow Alien: my animals in the pen.","Yellow Alien: Can you help?", "Me: Ok");
 		switchit = true;
 		} else{
 			Main.getInstance().level.dialouge("Thanks again!");

@@ -68,12 +68,6 @@ public class InputHandler extends KeyAdapter {
 		if (e == KeyEvent.VK_Q) {
 			player.interact();
 		}
-		if (e == KeyEvent.VK_DOWN) {
-			Main.getInstance().startRancher();
-		}
-		if (e == KeyEvent.VK_SPACE) {
-			Main.getInstance().state = Main.State.Herder;
-		}
 	}
 
 	public void CityRelease(int e) {
