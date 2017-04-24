@@ -21,7 +21,7 @@ public class Rancher {
 	Timer timer = new Timer();
 	long lastfired = 0;
 	int delay = 1000;
-	boolean gameStart;
+	public boolean gameStart;
 	int tempx, tempy;
 	Texture bg, help;
 	Random r = new Random();

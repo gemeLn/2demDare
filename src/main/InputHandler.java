@@ -99,6 +99,9 @@ public class InputHandler extends KeyAdapter {
 		if (e == KeyEvent.VK_SPACE) {
 			Main.getInstance().rancher.fire();
 		}
+		if (e == KeyEvent.VK_Q) {
+			Main.getInstance().rancher.gameStart = true;
+		}
 
 	}
 
