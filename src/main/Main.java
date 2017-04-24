@@ -3,6 +3,8 @@ package main;
 import graphics.Screen;
 import graphics.Window;
 import herder.Herder;
+import inout.Intro;
+import inout.Outro;
 import rancher.Rancher;
 
 public class Main {
@@ -23,7 +25,10 @@ public class Main {
 	public Level level;
 	public Rancher rancher;
 	public Herder herder;
+	public Intro intro;
+	public Outro outro;
 	static Main instance;
+	Screen screen;
 
 	public static Main getInstance() {
 		return instance;
@@ -33,7 +38,12 @@ public class Main {
 		rancher = new Rancher();
 		level = new Level();
 		herder = new Herder();
+		intro = new Intro();
+		outro = new Outro();
+		window.addKeyListener(new InputHandler(level.player));
 		window.show();
+		screen = window.getScreen();
+		introloop();
 	}
 
 	public void startRancher() {
@@ -43,19 +53,37 @@ public class Main {
 
 	public void introloop() {
 		inIntro = true;
+		state = State.Intro;
 		while (inIntro) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
-
+				intro.render(screen);
+				window.update();
+				screen.clear(0xffffff);
 				timeLR = System.currentTimeMillis();
 			}
 		}
+		gameloop();
+	}
+
+	private void outroloop() {
+		state = State.Outro;
+		inOutro = true;
+		while (inOutro) {
+			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
+				outro.render(screen);
+				window.update();
+				screen.clear(0xffffff);
+				timeLR = System.currentTimeMillis();
+			}
+		}
+
 	}
 
 	private void gameloop() {
+		state = State.City;
 		inGame = true;
 		window.update();
-		window.addKeyListener(new InputHandler(level.player));
-		Screen screen = window.getScreen();
+
 		while (inGame) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
 				if (state == State.City) {
@@ -77,12 +105,12 @@ public class Main {
 				timeLR = System.currentTimeMillis();
 			}
 		}
+		outroloop();
 	}
 
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
 		main.init();
-		main.gameloop();
 
 	}
 }

@@ -70,6 +70,9 @@ public class InputHandler extends KeyAdapter {
 		if (e == KeyEvent.VK_Q) {
 			player.interact();
 		}
+		if (e == KeyEvent.VK_DOWN) {
+			Main.getInstance().inGame = false;
+		}
 	}
 
 	public void CityRelease(int e) {
@@ -133,6 +136,10 @@ public class InputHandler extends KeyAdapter {
 			RancherPress(e.getKeyCode());
 		} else if (Main.getInstance().state == Main.State.Herder) {
 			HerderPress(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Intro) {
+			Main.getInstance().intro.handlePress(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Outro) {
+			Main.getInstance().outro.handlePress(e.getKeyCode());
 		}
 
 	}
@@ -144,6 +151,10 @@ public class InputHandler extends KeyAdapter {
 			RancherRelease(e.getKeyCode());
 		} else if (Main.getInstance().state == Main.State.Herder) {
 			HerderRelease(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Intro) {
+			Main.getInstance().intro.handleRelease(e.getKeyCode());
+		} else if (Main.getInstance().state == Main.State.Outro) {
+			Main.getInstance().outro.handleRelease(e.getKeyCode());
 		}
 	}
 
