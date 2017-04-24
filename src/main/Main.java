@@ -7,7 +7,7 @@ import rancher.Rancher;
 
 public class Main {
 	public enum State {
-		City, Rancher, Herder;
+		City, Rancher, Herder, Intro, Outro;
 	}
 
 	public State state = State.City;
@@ -32,6 +32,7 @@ public class Main {
 		rancher = new Rancher();
 		level = new Level();
 		herder = new Herder();
+		window.show();
 	}
 
 	public void startRancher() {
@@ -39,10 +40,17 @@ public class Main {
 		rancher = new Rancher();
 	}
 
-	private void loop() {
+	public void introloop() {
+		while (true) {
+			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
 
-		Window window = new Window("Game", 960, 540);
-		window.show();
+				timeLR = System.currentTimeMillis();
+			}
+		}
+	}
+
+	private void gameloop() {
+
 		window.update();
 		window.addKeyListener(new InputHandler(level.player));
 		Screen screen = window.getScreen();
@@ -72,7 +80,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		Main main = new Main();
 		main.init();
-		main.loop();
+		main.gameloop();
 
 	}
 }
