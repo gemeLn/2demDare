@@ -11,6 +11,7 @@ public class Main {
 	}
 
 	public State state = State.City;
+	public boolean inGame, inIntro, inOutro = false;
 
 	public Main() {
 		instance = this;
@@ -41,7 +42,8 @@ public class Main {
 	}
 
 	public void introloop() {
-		while (true) {
+		inIntro = true;
+		while (inIntro) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
 
 				timeLR = System.currentTimeMillis();
@@ -50,11 +52,11 @@ public class Main {
 	}
 
 	private void gameloop() {
-
+		inGame = true;
 		window.update();
 		window.addKeyListener(new InputHandler(level.player));
 		Screen screen = window.getScreen();
-		while (true) {
+		while (inGame) {
 			if ((double) (System.currentTimeMillis() - timeLR) > fps) {
 				if (state == State.City) {
 					level.update();
