@@ -33,7 +33,7 @@ public class InputHandler extends KeyAdapter {
 			playerMini.sprite = playerMini.spriteSheet.getTexture(2, 0);
 		}
 		if (e == KeyEvent.VK_Q) {
-			Main.getInstance().rancher.gameStart = true;
+			Main.getInstance().herder.gameStart = true;
 		}
 	}
 

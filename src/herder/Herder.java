@@ -62,6 +62,7 @@ public class Herder {
 	public void render(Screen screen) {
 		if (gameStart) {
 			screen.drawTexture(0, 0, BG);
+			screen.drawString(round+1+"", 10, 40);
 			for (Entity e : entities) {
 				e.render(screen);
 			}
