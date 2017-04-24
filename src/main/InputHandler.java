@@ -32,6 +32,9 @@ public class InputHandler extends KeyAdapter {
 			playerMini.yvel = playerMini.moveSpeed;
 			playerMini.sprite = playerMini.spriteSheet.getTexture(2, 0);
 		}
+		if (e == KeyEvent.VK_Q) {
+			Main.getInstance().rancher.gameStart = true;
+		}
 	}
 
 	public void HerderRelease(int e) {
@@ -47,7 +50,6 @@ public class InputHandler extends KeyAdapter {
 		} else if (e == KeyEvent.VK_DOWN) {
 			if (playerMini.yvel > 0)
 				playerMini.yvel = 0;
-
 		}
 	}
 
