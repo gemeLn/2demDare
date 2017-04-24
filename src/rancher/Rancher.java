@@ -12,6 +12,7 @@ import entities.Entity;
 import graphics.Screen;
 import graphics.Texture;
 import main.Main;
+import main.SoundPlayer;
 
 public class Rancher {
 	Font font = new Font("Sans-Serif", 1, 30);
@@ -29,6 +30,7 @@ public class Rancher {
 	int spiderCount;
 	final int totalTick = 3660;
 	int timerTick = totalTick;
+	SoundPlayer soundPlayer;
 
 	public String tickToTime(int tick) {
 		int total = (int) (tick / 60);
@@ -48,6 +50,7 @@ public class Rancher {
 		}
 		spiderCount = spiders.size();
 		timerTick = totalTick;
+		soundPlayer = new SoundPlayer("/sounds/ow.mp3");
 	}
 
 	public void clear() {
@@ -70,6 +73,7 @@ public class Rancher {
 					for (Spider e : spiders) {
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
+							soundPlayer.play();
 							remove.add(e);
 							spiderCount--;
 							if (spiderCount == 0) {

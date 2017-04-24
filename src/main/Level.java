@@ -40,6 +40,9 @@ public class Level {
 		city.addEntity(new AlienCitizen("/sprites/Alien3Sheet.png", 96, 96, 400, 0, 3, 110));
 		farm.addEntity(new HerderAlien("/sprites/AlienSheet.png", 96, 96, 600, 0, 2, 60));
 		entities.addAll(city.getList());
+		SoundPlayer back = new SoundPlayer("/sounds/SoundTrack1.mp3");
+		back.setVolume(0.25);
+		back.loop();
 	}
 
 	public void freeze() {
