@@ -46,6 +46,6 @@ public class Herder {
 		for (Entity e : entities) {
 			e.render(screen);
 		}
-		screen.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height, 0x000000);
+		screen.fillRectBlend(hitbox.x, hitbox.y, hitbox.width, hitbox.height, 0xFF3434);
 	}
 }
