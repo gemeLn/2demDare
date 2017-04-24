@@ -34,7 +34,7 @@ public class IGPlayer extends Entity {
 
 		if (x + xvel < -5 || x + xvel > 885)
 			x -= xvel;
-		if (y + yvel < -5 || y + yvel > 465)
+		if (y + yvel < 30 || y + yvel > 465)
 			y -= yvel;
 		x += xvel;
 		y += yvel;

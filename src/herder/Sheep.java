@@ -54,7 +54,7 @@ public class Sheep extends Entity {
 		y += yvel;
 		if (x > 860 || x < 20)
 			x -= xvel;
-		if (y < 20 || y > 440)
+		if (y < 40 || y > 440)
 			y -= yvel;
 		hitbox.update(x, y);
 	}

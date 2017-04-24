@@ -50,7 +50,7 @@ public class Rancher {
 		}
 		spiderCount = spiders.size();
 		timerTick = totalTick;
-		soundPlayer = new SoundPlayer("/sounds/ow.mp3");
+		//soundPlayer = new SoundPlayer("/sounds/ow.mp3");
 	}
 
 	public void clear() {
@@ -73,7 +73,7 @@ public class Rancher {
 					for (Spider e : spiders) {
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
-							soundPlayer.play();
+							//soundPlayer.play();
 							remove.add(e);
 							spiderCount--;
 							if (spiderCount == 0) {
