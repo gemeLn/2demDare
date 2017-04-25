@@ -70,6 +70,7 @@ public class InputHandler extends KeyAdapter {
 		if (e == KeyEvent.VK_Q) {
 			player.interact();
 		}
+
 	}
 
 	public void CityRelease(int e) {
