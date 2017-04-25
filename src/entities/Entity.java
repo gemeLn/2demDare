@@ -66,8 +66,6 @@ public class Entity {
 
 	public void render(Screen screen) {
 		screen.drawTexture(x, y, sprite);
-		screen.drawRect(1, 1, 100, 100, 0xFFFFFFF);
-		screen.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height, 0x000000);
 	}
 
 	public void interact() {

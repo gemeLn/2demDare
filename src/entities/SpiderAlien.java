@@ -4,6 +4,7 @@ import java.util.Random;
 
 import graphics.SpriteSheet;
 import main.Main;
+import rancher.Rancher;
 
 public class SpiderAlien extends Entity {
 	public int height = 100;
@@ -12,8 +13,8 @@ public class SpiderAlien extends Entity {
 	int tick = 0;
 	int dur;
 	int randomDialog;
-	boolean dialogOnce = true;
-	boolean switchit = false;
+	public boolean dialogOnce = true;
+	public boolean switchit = false;
 	Random random = new Random();
 	SpriteSheet spriteSheet;
 
@@ -42,9 +43,9 @@ public class SpiderAlien extends Entity {
 		tick++;
 		if (switchit) {
 			if (Main.getInstance().level.dialongOver) {
+				Main.getInstance().rancher = new Rancher(1);
 				Main.getInstance().state = Main.State.Rancher;
 				switchit = false;
-				dialogOnce = false;
 			}
 		}
 	}
@@ -56,12 +57,10 @@ public class SpiderAlien extends Entity {
 	public void interact() {
 		if (dialogOnce) {
 			Main.getInstance().level.dialouge("Blue Alien: Hi, can you help me?", "Me: Sure! Whats wrong",
-					"Blue Alien: There are so many spider,",
-					"Blue Alien: in the sewer. " +"Can you use this",
-					"Blue Alien: laser to extermiate them?",
-					"Me: Sure!");
+					"Blue Alien: There are so many spider,", "Blue Alien: in the sewer. " + "Can you use this",
+					"Blue Alien: laser to extermiate them?", "Me: Sure!");
 			switchit = true;
-		} else{
+		} else {
 			Main.getInstance().level.dialouge("Blue Alien: Thanks again!");
 		}
 	}

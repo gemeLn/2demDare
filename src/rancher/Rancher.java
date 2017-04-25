@@ -93,6 +93,7 @@ public class Rancher {
 									Main.getInstance().level.dialouge("Wow you sure killed them quickly",
 											"Thanks for the help here is something to pay you back");
 									Main.getInstance().level.core++;
+									Main.getInstance().level.spiderAlien.dialogOnce = false;
 								}
 							}
 						}
@@ -114,7 +115,7 @@ public class Rancher {
 			if (laserOn) {
 				laser.render(screen);
 			}
-			screen.drawString(rounds+1+"", 10, 40);
+			screen.drawString(rounds + 1 + "", 10, 40);
 			screen.drawString(tickToTime(timerTick), 470, 50, font, Color.RED);
 		} else
 			screen.drawTexture(0, 0, help);
@@ -124,9 +125,12 @@ public class Rancher {
 		if (gameStart) {
 			timerTick--;
 			if (timerTick == 0) {
+				Main.getInstance().level.spiderAlien.dialogOnce = true;
+				Main.getInstance().level.spiderAlien.switchit = false;
 				Main.getInstance().state = Main.State.City;
 				Main.getInstance().level.dialouge("That's too bad, you didn't kill them all in time",
 						"Those pesky pests will stay there forever");
+
 			}
 			aim.update();
 			for (Entity e : spiders) {

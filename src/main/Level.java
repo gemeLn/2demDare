@@ -28,6 +28,7 @@ public class Level {
 	Scene crash = new Scene("/sprites/crashsite.png");
 	Scene alley = new Scene("/sprites/alley.png");
 	Texture BG = crash.getTexture();
+	public SpiderAlien spiderAlien = new SpiderAlien("/sprites/Alien2Sheet.png", 96, 96, 300, 0, 1, 90);
 	public List<Entity> entities = new ArrayList<Entity>();
 	Entity dialougeBox = new Entity("/sprites/box.png", 960, 160);
 	public int dialougeTotal = 0;
@@ -36,25 +37,25 @@ public class Level {
 	SpriteSheet cores;
 	String[] dialougeArray;
 	int currentScene = 0;
-	Scene[] scenes = { crash, farm ,city, alley };
+	Scene[] scenes = { crash, farm, city, alley };
 	StringTokenizer stringTokenizer;
 	int totalScenes = scenes.length - 1;
 	public boolean dialongOver;
-	
+
 	public Level() {
 		entities.add(player);
 		city.addEntity(new AlienCitizen("/sprites/AlienSheet.png", 96, 96, 600, 0, 2, 60, "Yellow"));
-		city.addEntity(new SpiderAlien("/sprites/Alien2Sheet.png", 96, 96, 300, 0, 1, 90));
+		city.addEntity(spiderAlien);
 		city.addEntity(new AlienCitizen("/sprites/Alien3Sheet.png", 96, 96, 400, 0, 3, 110, "Pink"));
 		farm.addEntity(new HerderAlien("/sprites/AlienSheet.png", 96, 96, 600, 0, 2, 60));
 		alley.addEntity(new AlienCitizen("/sprites/Alien3Sheet.png", 96, 96, 400, 0, 3, 110, "Pink"));
 		crash.addEntity(new Rocket());
 		entities.addAll(crash.getList());
-		
+
 		cores = new SpriteSheet(new Texture("/sprites/coresheet.png", 200, 50), 50, 50);
-		//SoundPlayer back = new SoundPlayer("/sounds/SoundTrack1.mp3");
-	//	back.setVolume(0.25);
-		//back.loop();
+		// SoundPlayer back = new SoundPlayer("/sounds/SoundTrack1.mp3");
+		// back.setVolume(0.25);
+		// back.loop();
 
 	}
 
@@ -96,9 +97,9 @@ public class Level {
 		entities.get(0).render(screen);
 		screen.drawTexture(0, 490, cores.getTexture(core, 0));
 	}
-	
-	public void icon(String iconName, Screen screen){
-		switch (iconName){
+
+	public void icon(String iconName, Screen screen) {
+		switch (iconName) {
 		case "pink":
 			screen.drawTexture(800, 0, new Texture("/sprites/alien1profile.png", 150, 150));
 			break;
