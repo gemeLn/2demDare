@@ -35,7 +35,7 @@ public class Main {
 	}
 
 	private void init() {
-		rancher = new Rancher();
+		rancher = new Rancher(1);
 		level = new Level();
 		herder = new Herder();
 		intro = new Intro();
@@ -48,7 +48,12 @@ public class Main {
 
 	public void startRancher() {
 		state = State.Rancher;
-		rancher = new Rancher();
+		rancher = new Rancher(1);
+	}
+	
+	public void startRancher(int rounds) {
+		state = State.Rancher;
+		rancher = new Rancher(rounds);
 	}
 
 	public void introloop() {

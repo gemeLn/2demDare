@@ -20,6 +20,7 @@ public class Rancher {
 	Laser laser = new Laser();
 	Timer timer = new Timer();
 	long lastfired = 0;
+	int rounds = 1;
 	int delay = 1000;
 	public boolean gameStart;
 	int tempx, tempy;
@@ -44,16 +45,20 @@ public class Rancher {
 
 	}
 
-	public Rancher() {
-		gameStart = false;
+	public Rancher(int round) {
+		if (rounds == 1)
+			gameStart = false;
+		else
+			gameStart = true;
 		bg = new Texture("/sprites/sewers.png", 960, 540);
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < 9 + round * 3; i++) {
 			spiders.add(new Spider());
 		}
+		rounds = round;
 		spiderCount = spiders.size();
 		timerTick = totalTick;
 		help = new Texture("/sprites/instructions.spider.png", 960, 540);
-		//soundPlayer = new SoundPlayer("/sounds/ow.mp3");
+		// soundPlayer = new SoundPlayer("/sounds/ow.mp3");
 	}
 
 	public void clear() {
@@ -76,14 +81,19 @@ public class Rancher {
 					for (Spider e : spiders) {
 						if (e.hitbox.contains(new Point(tempx, tempy))) {
 							System.out.println("HIT");
-						//	soundPlayer.play();
+							// soundPlayer.play();
 							remove.add(e);
 							spiderCount--;
 							if (spiderCount == 0) {
-								Main.getInstance().state = Main.State.City;
-								Main.getInstance().level.dialouge("Wow you sure killed them quickly",
-										"Thanks for the help here is something to pay you back");
-								Main.getInstance().level.core++;
+								if (rounds < 3) {
+									rounds++;
+									Main.getInstance().startRancher(rounds);
+								} else {
+									Main.getInstance().state = Main.State.City;
+									Main.getInstance().level.dialouge("Wow you sure killed them quickly",
+											"Thanks for the help here is something to pay you back");
+									Main.getInstance().level.core++;
+								}
 							}
 						}
 					}
@@ -95,35 +105,36 @@ public class Rancher {
 	}
 
 	public void render(Screen screen) {
-		if(gameStart){
-		screen.drawTexture(0, 0, bg);
-		for (Spider e : spiders) {
-			e.render(screen);
-		}
-		screen.drawTexture(aim.x - 30, aim.y - 30, aim.sprite);
-		if (laserOn) {
-			laser.render(screen);
-		}
-		screen.drawString(tickToTime(timerTick), 470, 50, font, Color.RED);
-		}else
+		if (gameStart) {
+			screen.drawTexture(0, 0, bg);
+			for (Spider e : spiders) {
+				e.render(screen);
+			}
+			screen.drawTexture(aim.x - 30, aim.y - 30, aim.sprite);
+			if (laserOn) {
+				laser.render(screen);
+			}
+			screen.drawString(rounds+1+"", 10, 40);
+			screen.drawString(tickToTime(timerTick), 470, 50, font, Color.RED);
+		} else
 			screen.drawTexture(0, 0, help);
 	}
 
 	public void update() {
-		if(gameStart){
-		timerTick--;
-		if (timerTick == 0) {
-			Main.getInstance().state = Main.State.City;
-			Main.getInstance().level.dialouge("That's too bad, you didn't kill them all in time",
-					"Those pesky pests will stay there forever");
-		}
-		aim.update();
-		for (Entity e : spiders) {
-			e.update();
-		}
-		if (laserOn) {
-			laser.update();
-		}
+		if (gameStart) {
+			timerTick--;
+			if (timerTick == 0) {
+				Main.getInstance().state = Main.State.City;
+				Main.getInstance().level.dialouge("That's too bad, you didn't kill them all in time",
+						"Those pesky pests will stay there forever");
+			}
+			aim.update();
+			for (Entity e : spiders) {
+				e.update();
+			}
+			if (laserOn) {
+				laser.update();
+			}
 		}
 	}
 
