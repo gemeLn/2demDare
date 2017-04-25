@@ -60,7 +60,7 @@ public class HerderAlien extends Entity {
 				,"Yellow Alien: keeping my animals in the pen.","Yellow Alien: Can you help?", "Me: Ok");
 		switchit = true;
 		} else{
-			Main.getInstance().level.dialouge("Thanks again!");
+			Main.getInstance().level.dialouge("Yellow Alein: Thanks again!");
 		}
 	}
 	

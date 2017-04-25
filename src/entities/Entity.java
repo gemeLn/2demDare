@@ -20,6 +20,8 @@ public class Entity {
 	public Hitbox hitbox = new Hitbox(3, 0, 0, 0, 0, 100);
 
 	public Entity(String link, int width, int height) {
+		if(link.equals(""))
+			return;
 		sprite = new Texture(link, width, height);
 		this.width = width;
 		this.height = height;

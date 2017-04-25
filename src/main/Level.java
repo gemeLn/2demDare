@@ -10,6 +10,7 @@ import entities.AlienCitizen;
 import entities.Entity;
 import entities.HerderAlien;
 import entities.Player;
+import entities.Rocket;
 import entities.Scene;
 import entities.SpiderAlien;
 import graphics.Screen;
@@ -26,7 +27,7 @@ public class Level {
 	Scene farm = new Scene("/sprites/farm.png");
 	Scene crash = new Scene("/sprites/crashsite.png");
 	Scene alley = new Scene("/sprites/alley.png");
-	Texture BG = city.getTexture();
+	Texture BG = crash.getTexture();
 	public List<Entity> entities = new ArrayList<Entity>();
 	Entity dialougeBox = new Entity("/sprites/box.png", 960, 160);
 	public int dialougeTotal = 0;
@@ -35,7 +36,7 @@ public class Level {
 	SpriteSheet cores;
 	String[] dialougeArray;
 	int currentScene = 0;
-	Scene[] scenes = { city, alley, crash, farm };
+	Scene[] scenes = { crash, farm ,city, alley };
 	StringTokenizer stringTokenizer;
 	int totalScenes = scenes.length - 1;
 	public boolean dialongOver;
@@ -47,7 +48,8 @@ public class Level {
 		city.addEntity(new AlienCitizen("/sprites/Alien3Sheet.png", 96, 96, 400, 0, 3, 110, "Pink"));
 		farm.addEntity(new HerderAlien("/sprites/AlienSheet.png", 96, 96, 600, 0, 2, 60));
 		alley.addEntity(new AlienCitizen("/sprites/Alien3Sheet.png", 96, 96, 400, 0, 3, 110, "Pink"));
-		entities.addAll(city.getList());
+		crash.addEntity(new Rocket());
+		entities.addAll(crash.getList());
 		
 		cores = new SpriteSheet(new Texture("/sprites/coresheet.png", 200, 50), 50, 50);
 		//SoundPlayer back = new SoundPlayer("/sounds/SoundTrack1.mp3");

@@ -59,10 +59,10 @@ public class SpiderAlien extends Entity {
 					"Blue Alien: There are so many spider,",
 					"Blue Alien: in the sewer. " +"Can you use this",
 					"Blue Alien: laser to extermiate them?",
-					"Me: Sure!i");
+					"Me: Sure!");
 			switchit = true;
 		} else{
-			Main.getInstance().level.dialouge("Thanks again!");
+			Main.getInstance().level.dialouge("Blue Alien: Thanks again!");
 		}
 	}
 
